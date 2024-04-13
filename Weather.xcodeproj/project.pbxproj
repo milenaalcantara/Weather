@@ -102,7 +102,6 @@
 				36E4591E2BCAB7530017F5D2 /* Model */,
 				36E4591D2BCAB7470017F5D2 /* Controller */,
 				36E4591C2BCAB7400017F5D2 /* View */,
-				36E458F02BCAB1670017F5D2 /* ViewController.swift */,
 				36E458F52BCAB1680017F5D2 /* Assets.xcassets */,
 				36E458FA2BCAB1680017F5D2 /* Info.plist */,
 			);
@@ -136,6 +135,7 @@
 		36E4591D2BCAB7470017F5D2 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				36E458F02BCAB1670017F5D2 /* ViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
