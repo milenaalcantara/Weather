@@ -48,7 +48,7 @@ class ViewController: UIViewController {
     private lazy var weatherIcon: UIImageView = {
         let imageView = UIImageView(frame: .zero)
         imageView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.image = UIImage(named: "daylight")
+        imageView.image = UIImage(named: "sunIcon")
         imageView.contentMode = .scaleAspectFit
         return imageView
     }()
@@ -163,7 +163,7 @@ class ViewController: UIViewController {
     private lazy var dailyForecastTableView: UITableView = {
         let tableView = UITableView()
         tableView.translatesAutoresizingMaskIntoConstraints = false
-        tableView.backgroundColor = .theme.softGray
+        tableView.backgroundColor = .clear
         tableView.register(
             DailyForecastTableViewCell.self,
             forCellReuseIdentifier: DailyForecastTableViewCell.identifier
@@ -213,7 +213,7 @@ extension ViewController: SetupView {
     }
     
     func setConstraints() {
-        setBackgroundViewConstraints()
+        backgroundView.setConstraintsToParent(view)
         setHeaderViewConstraints()
         setCityLabelConstraints()
         setTemperatureLabelConstraints()
@@ -225,21 +225,12 @@ extension ViewController: SetupView {
         setDailyForecastTableViewConstraint()
     }
     
-    private func setBackgroundViewConstraints() {
-        NSLayoutConstraint.activate([
-            backgroundView.topAnchor.constraint(equalTo: view.topAnchor),
-            backgroundView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            backgroundView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            backgroundView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
-        ])
-    }
-    
     private func setHeaderViewConstraints() {
         NSLayoutConstraint.activate([
             headerView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 60),
             headerView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 35),
             headerView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -35),
-            headerView.heightAnchor.constraint(equalToConstant: 169)
+            headerView.heightAnchor.constraint(equalToConstant: 150)
         ])
     }
     
@@ -254,7 +245,7 @@ extension ViewController: SetupView {
     
     private func setTemperatureLabelConstraints() {
         NSLayoutConstraint.activate([
-            temperatureLabel.topAnchor.constraint(equalTo: cityLabel.topAnchor, constant: 41),
+            temperatureLabel.topAnchor.constraint(equalTo: cityLabel.bottomAnchor, constant: 12),
             temperatureLabel.leadingAnchor.constraint(equalTo: headerView.leadingAnchor, constant: 26),
         ])
     }
@@ -305,7 +296,7 @@ extension ViewController: SetupView {
     
     private func setDailyForecastTableViewConstraint() {
         NSLayoutConstraint.activate([
-            dailyForecastTableView.topAnchor.constraint(equalTo: dailyForecastLabel.bottomAnchor, constant: 29),
+            dailyForecastTableView.topAnchor.constraint(equalTo: dailyForecastLabel.bottomAnchor, constant: 20),
             dailyForecastTableView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 12),
             dailyForecastTableView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -12),
             dailyForecastTableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
@@ -330,7 +321,7 @@ extension ViewController: UICollectionViewDataSource {
 
 extension ViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        return 7
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -338,7 +329,6 @@ extension ViewController: UITableViewDataSource {
             withIdentifier: DailyForecastTableViewCell.identifier,
             for: indexPath
         )
-        
         return cell
     }
 }

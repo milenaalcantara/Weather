@@ -41,16 +41,57 @@ class DailyForecastTableViewCell: UITableViewCell {
     private lazy var iconImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.contentMode = .scaleAspectFit
+        imageView.image = UIImage(named: "cloudIcon")
         return imageView
+    }()
+    
+    private lazy var stackView: UIStackView = {
+        let stackView = UIStackView(arrangedSubviews: [
+            weekDayLabel,
+            iconImageView,
+            minTemperatureLabel,
+            maxTemperatureLabel
+        ])
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        stackView.axis = .horizontal
+        stackView.isLayoutMarginsRelativeArrangement = true
+        stackView.directionalLayoutMargins = NSDirectionalEdgeInsets(
+            top: 16,
+            leading: 16,
+            bottom: 16,
+            trailing: 16
+        )
+        stackView.spacing = 15
+        return stackView
     }()
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        
-        backgroundColor = .theme.bluePrimaryColor
+        setupView()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    func setupView() {
+        backgroundColor = .clear
+        selectionStyle = .none
+        buildLayout()
+    }
+}
+
+extension DailyForecastTableViewCell: SetupView {
+    func setHierarchy() {
+        contentView.addSubview(stackView)
+        
+        NSLayoutConstraint.activate([
+            weekDayLabel.widthAnchor.constraint(lessThanOrEqualToConstant: 50)
+        ])
+    }
+    
+    func setConstraints() {
+        stackView.setConstraintsToParent(contentView)
     }
 }

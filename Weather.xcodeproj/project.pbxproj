@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3603FD6F2BCC6DB80066DF9F /* UIView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3603FD6E2BCC6DB80066DF9F /* UIView+Extensions.swift */; };
 		3698D0B62BCC201100EA53B5 /* HourlyForecastCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3698D0B52BCC201100EA53B5 /* HourlyForecastCollectionViewCell.swift */; };
 		3698D0BA2BCC2A3200EA53B5 /* SetupViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3698D0B92BCC2A3200EA53B5 /* SetupViewProtocol.swift */; };
 		3698D0BD2BCC2C9C00EA53B5 /* Color+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3698D0BC2BCC2C9C00EA53B5 /* Color+Extensions.swift */; };
@@ -39,6 +40,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3603FD6E2BCC6DB80066DF9F /* UIView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extensions.swift"; sourceTree = "<group>"; };
 		3698D0B52BCC201100EA53B5 /* HourlyForecastCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HourlyForecastCollectionViewCell.swift; sourceTree = "<group>"; };
 		3698D0B92BCC2A3200EA53B5 /* SetupViewProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupViewProtocol.swift; sourceTree = "<group>"; };
 		3698D0BC2BCC2C9C00EA53B5 /* Color+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Extensions.swift"; sourceTree = "<group>"; };
@@ -103,6 +105,7 @@
 			isa = PBXGroup;
 			children = (
 				3698D0BC2BCC2C9C00EA53B5 /* Color+Extensions.swift */,
+				3603FD6E2BCC6DB80066DF9F /* UIView+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -336,6 +339,7 @@
 				36E458ED2BCAB1670017F5D2 /* AppDelegate.swift in Sources */,
 				3698D0B62BCC201100EA53B5 /* HourlyForecastCollectionViewCell.swift in Sources */,
 				36E458EF2BCAB1670017F5D2 /* SceneDelegate.swift in Sources */,
+				3603FD6F2BCC6DB80066DF9F /* UIView+Extensions.swift in Sources */,
 				3698D0BD2BCC2C9C00EA53B5 /* Color+Extensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

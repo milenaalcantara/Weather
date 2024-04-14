@@ -26,7 +26,7 @@ class HourlyForecastCollectionViewCell: UICollectionViewCell {
     private lazy var iconImageView: UIImageView = {
         let imageView = UIImageView(frame: .zero)
         imageView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.image = UIImage(named: "daylight")
+        imageView.image = UIImage(named: "sunIcon")
         imageView.contentMode = .scaleAspectFit
         return imageView
     }()
@@ -82,20 +82,8 @@ extension HourlyForecastCollectionViewCell: SetupView {
     }
     
     func setConstraints() {
-        setStackViewConstraints()
-        setIconImageViewConstraints()
-    }
-    
-    private func setStackViewConstraints() {
-        NSLayoutConstraint.activate([
-            stackView.topAnchor.constraint(equalTo: contentView.topAnchor),
-            stackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
-            stackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-            stackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
-        ])
-    }
-    
-    private func setIconImageViewConstraints() {
+        stackView.setConstraintsToParent(contentView)
+        
         NSLayoutConstraint.activate([
             iconImageView.heightAnchor.constraint(equalToConstant: 33),
         ])
