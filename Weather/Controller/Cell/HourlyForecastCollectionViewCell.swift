@@ -74,6 +74,12 @@ class HourlyForecastCollectionViewCell: UICollectionViewCell {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    func loadData(time: String?, icon: UIImage?, temp: String?) {
+        hourLabel.text = time
+        iconImageView.image = icon
+        temperatureLabel.text = temp
+    }
 }
 
 extension HourlyForecastCollectionViewCell: SetupView {

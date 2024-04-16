@@ -29,7 +29,6 @@ class ViewController: UIViewController {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = UIFont.systemFont(ofSize: 20, weight: .medium)
-        label.text = "São Paulo"
         label.textAlignment = .center
         label.textColor = UIColor.theme.bluePrimaryColor
         return label
@@ -39,7 +38,6 @@ class ViewController: UIViewController {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = UIFont.systemFont(ofSize: 70, weight: .bold)
-        label.text = "25ºC"
         label.textAlignment = .center
         label.textColor = UIColor.theme.bluePrimaryColor
         return label
@@ -66,7 +64,6 @@ class ViewController: UIViewController {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = UIFont.systemFont(ofSize: 12, weight: .semibold)
-        label.text = "1000mm"
         label.textColor = .white
         return label
     }()
@@ -91,7 +88,6 @@ class ViewController: UIViewController {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = UIFont.systemFont(ofSize: 12, weight: .semibold)
-        label.text = "10km/h"
         label.textColor = UIColor.theme.contrastColor
         return label
     }()
@@ -172,10 +168,15 @@ class ViewController: UIViewController {
         return tableView
     }()
     
+    private let service = Service()
+    private var city = City(lat: "-3.71839", lon: "-38.5434", name: "Fortaleza")
+    private var forecastResponse: ForecastResponse?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // executa sempre que essa vc é carregada (apenas 1 vez)
         // Do any additional setup after loading the view.
+        fetchData()
         buildLayout()
     }
     
@@ -194,6 +195,23 @@ class ViewController: UIViewController {
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
+    }
+    
+    func fetchData() {
+        service.fetchData(city: city) { [weak self] response in
+            self?.forecastResponse = response
+            DispatchQueue.main.async {
+                self?.loadData()
+            }
+        }
+    }
+    
+    func loadData() {
+        cityLabel.text = city.name
+        temperatureLabel.text = forecastResponse?.current.temp.toCelcius()
+        humidityLabel.text = "\(forecastResponse?.current.humidity ?? 0)"
+        windLabel.text = "\(forecastResponse?.current.windSpeed ?? 0)km/h"
+        hourlyCollectionView.reloadData()
     }
 }
 
@@ -246,7 +264,8 @@ extension ViewController: SetupView {
     private func setTemperatureLabelConstraints() {
         NSLayoutConstraint.activate([
             temperatureLabel.topAnchor.constraint(equalTo: cityLabel.bottomAnchor, constant: 12),
-            temperatureLabel.leadingAnchor.constraint(equalTo: headerView.leadingAnchor, constant: 26),
+            temperatureLabel.leadingAnchor.constraint(equalTo: headerView.leadingAnchor, constant: 18),
+            temperatureLabel.heightAnchor.constraint(equalToConstant: 71)
         ])
     }
     
@@ -254,9 +273,9 @@ extension ViewController: SetupView {
         NSLayoutConstraint.activate([
             weatherIcon.heightAnchor.constraint(equalToConstant: 86),
             weatherIcon.widthAnchor.constraint(equalToConstant: 86),
-            weatherIcon.trailingAnchor.constraint(equalTo: headerView.trailingAnchor, constant: -26),
+            weatherIcon.trailingAnchor.constraint(equalTo: headerView.trailingAnchor, constant: -18),
             weatherIcon.centerYAnchor.constraint(equalTo: temperatureLabel.centerYAnchor),
-            weatherIcon.leadingAnchor.constraint(equalTo: temperatureLabel.trailingAnchor, constant: 14),
+            weatherIcon.leadingAnchor.constraint(equalTo: temperatureLabel.trailingAnchor, constant: 8),
             
         ])
     }
@@ -306,13 +325,21 @@ extension ViewController: SetupView {
 
 extension ViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 12
+        return forecastResponse?.hourly.count ?? 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(
+        guard let cell = collectionView.dequeueReusableCell(
             withReuseIdentifier: HourlyForecastCollectionViewCell.identifier,
             for: indexPath
+        ) as? HourlyForecastCollectionViewCell else {
+            return UICollectionViewCell()
+        }
+        let forecast = forecastResponse?.hourly[indexPath.row]
+        cell.loadData(
+            time: forecast?.dt.toHourFormat(),
+            icon: UIImage(named: "sunIcon"),
+            temp: forecast?.temp.toCelcius()
         )
         
         return cell

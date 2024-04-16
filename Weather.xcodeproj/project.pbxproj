@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		3603FD6F2BCC6DB80066DF9F /* UIView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3603FD6E2BCC6DB80066DF9F /* UIView+Extensions.swift */; };
+		3603FD712BCC815F0066DF9F /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3603FD702BCC815F0066DF9F /* Service.swift */; };
+		3603FD732BCC94E90066DF9F /* ForecastResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3603FD722BCC94E90066DF9F /* ForecastResponse.swift */; };
+		36902CD52BCDFDE3002874F7 /* Core+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36902CD42BCDFDE3002874F7 /* Core+Extensions.swift */; };
 		3698D0B62BCC201100EA53B5 /* HourlyForecastCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3698D0B52BCC201100EA53B5 /* HourlyForecastCollectionViewCell.swift */; };
 		3698D0BA2BCC2A3200EA53B5 /* SetupViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3698D0B92BCC2A3200EA53B5 /* SetupViewProtocol.swift */; };
 		3698D0BD2BCC2C9C00EA53B5 /* Color+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3698D0BC2BCC2C9C00EA53B5 /* Color+Extensions.swift */; };
@@ -41,6 +44,9 @@
 
 /* Begin PBXFileReference section */
 		3603FD6E2BCC6DB80066DF9F /* UIView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extensions.swift"; sourceTree = "<group>"; };
+		3603FD702BCC815F0066DF9F /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
+		3603FD722BCC94E90066DF9F /* ForecastResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecastResponse.swift; sourceTree = "<group>"; };
+		36902CD42BCDFDE3002874F7 /* Core+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Core+Extensions.swift"; sourceTree = "<group>"; };
 		3698D0B52BCC201100EA53B5 /* HourlyForecastCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HourlyForecastCollectionViewCell.swift; sourceTree = "<group>"; };
 		3698D0B92BCC2A3200EA53B5 /* SetupViewProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupViewProtocol.swift; sourceTree = "<group>"; };
 		3698D0BC2BCC2C9C00EA53B5 /* Color+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Extensions.swift"; sourceTree = "<group>"; };
@@ -106,6 +112,7 @@
 			children = (
 				3698D0BC2BCC2C9C00EA53B5 /* Color+Extensions.swift */,
 				3603FD6E2BCC6DB80066DF9F /* UIView+Extensions.swift */,
+				36902CD42BCDFDE3002874F7 /* Core+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -182,6 +189,7 @@
 		36E4591E2BCAB7530017F5D2 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				3603FD722BCC94E90066DF9F /* ForecastResponse.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -189,6 +197,7 @@
 		36E4591F2BCAB7610017F5D2 /* Service */ = {
 			isa = PBXGroup;
 			children = (
+				3603FD702BCC815F0066DF9F /* Service.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -334,13 +343,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				36E458F12BCAB1670017F5D2 /* ViewController.swift in Sources */,
+				3603FD732BCC94E90066DF9F /* ForecastResponse.swift in Sources */,
 				3698D0BA2BCC2A3200EA53B5 /* SetupViewProtocol.swift in Sources */,
 				36D74F9D2BCC44220029694F /* DailyForecastTableViewCell.swift in Sources */,
 				36E458ED2BCAB1670017F5D2 /* AppDelegate.swift in Sources */,
 				3698D0B62BCC201100EA53B5 /* HourlyForecastCollectionViewCell.swift in Sources */,
+				3603FD712BCC815F0066DF9F /* Service.swift in Sources */,
 				36E458EF2BCAB1670017F5D2 /* SceneDelegate.swift in Sources */,
 				3603FD6F2BCC6DB80066DF9F /* UIView+Extensions.swift in Sources */,
 				3698D0BD2BCC2C9C00EA53B5 /* Color+Extensions.swift in Sources */,
+				36902CD52BCDFDE3002874F7 /* Core+Extensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
